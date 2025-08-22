@@ -1,0 +1,50 @@
+name: Scheduler
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  update-sponsors:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: true
+          sparse-checkout-cone-mode: false
+          # Download only the necessary files
+          sparse-checkout: |
+            package.json
+            bun.lock
+            sponsorkit.config.ts
+
+      - name: 🔧 Configure Git
+        uses: cli-stuff/setup-github-actions-bot@6f48e564efbb89283f4ec530312d3cfd23a95f58 # v0.1
+
+      - name: 🔧 Setup Bun
+        uses: oven-sh/setup-bun@735343b667d3e6f658f44d0eca948eb6282f2b76 # v2.0.2
+        with:
+          bun-version: '1.2.20'
+
+      - name: 📦 Install dependencies
+        run: bun ci
+
+      - name: 💖 Update sponsors
+        run: bunx sponsorkit
+        env:
+          SPONSORKIT_GITHUB_TOKEN: ${{ secrets.SPONSORKIT_GITHUB_TOKEN }}
+          SPONSORKIT_GITHUB_LOGIN: ${{ github.repository_owner }}
+
+      - name: Commit
+        run: |
+          git commit -am 'chore: update sponsors'
+
+      - name: Push changes
+        run: git push
