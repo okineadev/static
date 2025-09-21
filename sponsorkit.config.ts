@@ -1,4 +1,4 @@
-import { type BadgePreset, defineConfig, tierPresets } from "sponsorkit";
+import { type BadgePreset, defineConfig, tierPresets } from 'sponsorkit'
 
 const past: BadgePreset = {
 	avatar: {
@@ -9,21 +9,21 @@ const past: BadgePreset = {
 	container: {
 		sidePadding: 35,
 	},
-};
+}
 
 export default defineConfig({
 	tiers: [
 		{
-			title: "Past Sponsors",
+			title: 'Past Sponsors',
 			monthlyDollars: -1,
 			preset: past,
 		},
 		{
-			title: "Backers",
+			title: 'Backers',
 			preset: tierPresets.small,
 		},
 		{
-			title: "Sponsors",
+			title: 'Sponsors',
 			monthlyDollars: 10,
 			preset: {
 				avatar: {
@@ -37,33 +37,33 @@ export default defineConfig({
 			},
 		},
 		{
-			title: "Silver Sponsors",
+			title: 'Silver Sponsors',
 			monthlyDollars: 30,
 			preset: tierPresets.medium,
 		},
 		{
-			title: "Gold Sponsors",
+			title: 'Gold Sponsors',
 			monthlyDollars: 60,
 			preset: tierPresets.large,
 		},
 		{
-			title: "Platinum Sponsors",
+			title: 'Platinum Sponsors',
 			monthlyDollars: 100,
 			preset: tierPresets.xl,
 		},
 	],
 
-	outputDir: ".",
-	formats: ["svg", "png"],
+	outputDir: '.',
+	formats: ['svg', 'png'],
 
 	renders: [
 		{
-			name: "sponsors",
+			name: 'sponsors',
 			width: 800,
 		},
 		{
-			name: "sponsors.wide",
+			name: 'sponsors.wide',
 			width: 1800,
 		},
 	],
-});
+})

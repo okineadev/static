@@ -24,6 +24,8 @@ jobs:
             package.json
             bun.lock
             sponsorkit.config.ts
+            sponsors*.png
+            sponsors*.svg
 
       - name: 🔧 Configure Git
         uses: cli-stuff/setup-github-actions-bot@6f48e564efbb89283f4ec530312d3cfd23a95f58 # v0.1
@@ -42,10 +44,10 @@ jobs:
           SPONSORKIT_GITHUB_TOKEN: ${{ secrets.SPONSORKIT_GITHUB_TOKEN }}
           SPONSORKIT_GITHUB_LOGIN: ${{ github.repository_owner }}
 
-      - name: Commit
+      - name: 💾 Commit
         run: |
-          git add --sparse *.png *.svg
-          git commit -m 'chore: update sponsors'
+          git add sponsors*.png sponsors*.svg
+          git commit -m '💖 Update sponsors'
 
-      - name: Push changes
+      - name: 📤 Push changes
         run: git push
