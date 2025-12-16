@@ -15,7 +15,7 @@ text {
   font-size: 20px;
 }
 </style>
-<text x="400" y="40" text-anchor="middle" class="sponsorkit-tier-title">Backers</text><a href="https://byjohann.link" class="sponsorkit-link" target="_blank" id="johannschopplich">
+<text x="400" y="40" text-anchor="middle" class="sponsorkit-tier-title">Backers</text><a href="https://johannschopplich.com" class="sponsorkit-link" target="_blank" id="johannschopplich">
   
   <clipPath id="cac2fc9">
     <rect x="382.5" y="65" width="35" height="35" rx="17.5" ry="17.5" />
